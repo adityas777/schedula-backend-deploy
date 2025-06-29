@@ -38,7 +38,8 @@ export class AuthService {
         email: profile.email,
         name: profile.name,
         provider: 'google',
-        password: null,
+      password: '', // instead of null
+
         role: profile.role || 'patient',
       });
     }
