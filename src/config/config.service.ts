@@ -1,15 +1,8 @@
-// Config serviceimport { Injectable } from '@nestjs/common';
-import { ConfigService as NestConfigService } from '@nestjs/config';
+import { Injectable } from '@nestjs/common';
+import { ConfigService as NestCS } from '@nestjs/config';
 
 @Injectable()
 export class ConfigService {
-  constructor(private config: NestConfigService) {}
-
-  get(key: string): string {
-    return this.config.get<string>(key);
-  }
-
-  getNumber(key: string): number {
-    return Number(this.config.get<string>(key));
-  }
+  constructor(private cs: NestCS) {}
+  get<T>(key: string): T { return this.cs.get<T>(key, { infer: true }); }
 }
